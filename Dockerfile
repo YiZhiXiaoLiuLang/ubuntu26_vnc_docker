@@ -25,6 +25,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     firefox \
     # Utilities
     xterm \
+    lxterminal \
     mousepad \
     nano \
     dbus-x11 \
