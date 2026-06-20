@@ -21,8 +21,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # noVNC and websockify
     novnc \
     websockify \
-    # Firefox browser
-    firefox \
     # Utilities
     xterm \
     lxterminal \
@@ -46,6 +44,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN locale-gen en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
+
+# Download wallpaper
+RUN mkdir -p /usr/share/backgrounds && \
+    curl -fsSL -o /usr/share/backgrounds/wallpaper.jpg \
+    "https://static.vecteezy.com/system/resources/thumbnails/049/546/772/small/stunning-high-resolution-nature-and-landscape-backgrounds-breathtaking-scenery-in-hd-free-photo.jpg"
 
 # Create noVNC utility symlinks (some packages install them in non-standard paths)
 RUN ln -sf /usr/share/novnc/vnc.html /usr/share/novnc/index.html 2>/dev/null || true

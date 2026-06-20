@@ -27,6 +27,15 @@ if [ -f ~/.config/lxsession/LXDE/desktop.conf ]; then
     sed -i 's|^polkit/command=.*|polkit/command=|' ~/.config/lxsession/LXDE/desktop.conf
 fi
 
+# ---- Set LXDE desktop wallpaper ----
+mkdir -p ~/.config/pcmanfm/LXDE/
+cat > ~/.config/pcmanfm/LXDE/desktop.conf << 'WALLPAPER'
+[*]
+wallpaper_mode=stretch
+wallpaper_common=1
+wallpaper=/usr/share/backgrounds/wallpaper.jpg
+WALLPAPER
+
 # ---- Start D-Bus (required by LXDE) ----
 if [ -d /run/dbus ]; then
     rm -f /run/dbus/pid
@@ -50,6 +59,8 @@ chmod 700 ${XDG_RUNTIME_DIR}
 
 startlxde &
 sleep 2
+# Apply wallpaper immediately
+pcmanfm --set-wallpaper /usr/share/backgrounds/wallpaper.jpg 2>/dev/null || true
 echo "[✓] LXDE desktop started"
 
 # ---- Start VNC server (x11vnc) ----
