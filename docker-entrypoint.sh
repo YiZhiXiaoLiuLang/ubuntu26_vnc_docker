@@ -18,6 +18,15 @@ echo "[✓] Root password set (same as VNC password)"
 rm -f /tmp/.X1-lock /tmp/.X11-unix/X1 2>/dev/null || true
 rm -rf ~/.vnc/*.pid ~/.vnc/*.log 2>/dev/null || true
 
+# ---- Disable lxpolkit to avoid "No session for PID" popup ----
+mkdir -p ~/.config/lxsession/LXDE/
+if [ -f /etc/xdg/lxsession/LXDE/desktop.conf ]; then
+    cp /etc/xdg/lxsession/LXDE/desktop.conf ~/.config/lxsession/LXDE/desktop.conf
+fi
+if [ -f ~/.config/lxsession/LXDE/desktop.conf ]; then
+    sed -i 's|^polkit/command=.*|polkit/command=|' ~/.config/lxsession/LXDE/desktop.conf
+fi
+
 # ---- Start D-Bus (required by LXDE) ----
 if [ -d /run/dbus ]; then
     rm -f /run/dbus/pid

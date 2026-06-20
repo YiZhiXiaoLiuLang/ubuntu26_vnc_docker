@@ -25,6 +25,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     firefox \
     # Utilities
     xterm \
+    mousepad \
+    nano \
     dbus-x11 \
     procps \
     locales \
