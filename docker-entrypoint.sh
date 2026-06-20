@@ -7,7 +7,7 @@ echo "============================================"
 
 # ---- Set VNC password ----
 mkdir -p ~/.vnc
-echo "${VNC_PASSWORD}" | vncpasswd -f > ~/.vnc/passwd
+x11vnc -storepasswd "${VNC_PASSWORD}" ~/.vnc/passwd
 chmod 600 ~/.vnc/passwd
 
 # ---- Set root password (same as VNC password) ----

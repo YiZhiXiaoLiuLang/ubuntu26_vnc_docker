@@ -16,8 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     lxappearance \
     lxsession-default-apps \
     # VNC server
-    tigervnc-standalone-server \
-    tigervnc-common \
+    x11vnc \
     # noVNC and websockify
     novnc \
     websockify \
