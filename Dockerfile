@@ -15,7 +15,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     lxde-core \
     lxappearance \
     lxsession-default-apps \
-    # VNC server
+    # X server and VNC
+    xvfb \
     x11vnc \
     # noVNC and websockify
     novnc \
